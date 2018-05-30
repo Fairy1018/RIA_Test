@@ -1,0 +1,17 @@
+#打开数据库的命令：
+mysql -u root -p
+
+
+create database qcwysearchdb DEFAULT CHARACTER SET utf8 COLLATE utf8_general_ci;
+use qcwysearchdb;
+CREATE TABLE if not exists `qcwysearch_py3_new` (
+    `key` VARCHAR(100) NOT NULL PRIMARY KEY, #主键
+    `title` VARCHAR(100), # 职位名称
+    `link` VARCHAR(200), # 详情链接
+    `company` VARCHAR(100), # 公司
+    `salary` VARCHAR(20), # 薪资
+    `updatetime` VARCHAR(20), # 更新时间
+    `salary_range` VARCHAR(30), # 薪资范围
+    `num` VARCHAR(10), # 招聘人数
+    `parent_link` VARCHAR(200) # 上层链接
+)DEFAULT CHARSET=utf8 ;
