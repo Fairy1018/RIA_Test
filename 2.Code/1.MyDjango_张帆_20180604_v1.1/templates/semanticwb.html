@@ -1,0 +1,203 @@
+{% load static %}
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <title>互联网招聘信息分析软件</title>
+    <link rel="stylesheet" href="{% static 'css/semantic.css' %}">
+    <script src="{% static 'js/jquery.min.js' %}"></script>
+    <script src="{% static 'js/semantic.js' %}"></script>
+    <script src="{% static 'js/highcharts.js' %}"></script>
+    <script src="{% static 'js/highcharts-more.js' %}"></script>
+    <script src="{% static 'js/exporting.js' %}"></script>
+  </head>
+  <body>
+    <div class="ui thin visible left sidebar inverted vertical menu">
+      <div class="header item">
+        <img src="{% static 'images/logo2.png' %}">
+      </div>
+      <div class="item">
+          数值分析
+        <i class="browser icon"></i>
+      </div>
+      <div class="item">
+         图表分析
+        <i class="bar chart icon"></i>
+      </div>
+      <div class="item">
+        拓展功能
+        <i class="idea icon"></i>
+      </div>
+
+    </div>
+    <div class="pusher">
+
+
+      <div class="ui menu">
+        <div class="header item" id="menu">
+          菜单
+          <i class="content icon"></i>
+        </div>
+        <div class="item">
+          关于我们
+        </div>
+        <div class="item">
+          Location
+        </div>
+        <div class="item">
+          Others
+        </div>
+
+      </div>
+      <div class="ui container">
+        <div class="ui divided items">
+          <div class="item">
+            <div class="content">
+              <div class="header">
+                招聘职位总和
+              </div>
+              <div class="description">
+                <p>
+                  职位总和：{{ JobInfo.sum }}
+                </p>
+                <p>
+                  平均薪资：{{ JobInfo.avgsal }}
+                </p>
+                 <p>
+                  最高薪资： {{ JobInfo.maxsal }}
+                </p>
+                 <p>
+                  最低薪资： {{ JobInfo.minsal }}
+                </p>
+              </div>
+              <div class="extra">
+                <div class="ui label">武汉市</div>
+                <div class="ui label">互联网</div>
+
+              </div>
+
+            </div>
+
+          </div>
+          <div class="item">
+            <div class="content">
+              <div class="header">
+                排名前五公司
+              </div>
+              <div class="description">
+                <p>
+                  Say something!
+                </p>
+              </div>
+              <div class="extra">
+                <div class="ui label">
+                  tag1
+                </div>
+                <div class="ui label">
+                  tag2
+                </div>
+
+              </div>
+
+            </div>
+
+          </div>
+          <div class="item">
+            <div class="content">
+              <div class="header">
+                排名前五岗位
+              </div>
+              <div class="description">
+                <p>
+                  Say something!
+                </p>
+              </div>
+              <div class="extra">
+                <div class="ui label">
+                  tag1
+                </div>
+                <div class="ui label">
+                  tag2
+                </div>
+
+              </div>
+
+            </div>
+
+          </div>
+
+        </div>
+        <div class="ui pagination menu">
+          <a class="item" href="#"> < </a>
+          <div class="disable item">
+            page 1 of 3
+          </div>
+          <a class="item" href="#"> > </a>
+        </div>
+      </div>
+
+        <div class="ui divider"></div>
+      <div class="ui equal width grid" style="margin:5px 0 5px 0;width:70%">
+        <div class="row">
+          <div class="column">
+            <div class="ui container segment">
+              <div class="ui compact menu">
+                <div class="ui simple dropdown item">
+                  地域分析
+                  <i class="dropdown icon"></i>
+                  <div class="menu">
+                    <div class="item" id="WH">武汉</div>
+                    <div class="item" id="BJ">北京</div>
+                    <div class="item" id="SZ">深圳</div>
+                  </div>
+                </div>
+              </div>
+              <div class="ui container" id="chartarea"></div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+
+    </div>
+    <script>
+      $('#menu').click(function () {
+        $('.ui.sidebar').sidebar('toggle');
+      });
+    </script>
+
+   <!--显示图表-->
+   <script>
+        $('#WH').click(function () {
+          $('#chartarea').highcharts({
+            chart: {
+                type: 'bar'
+            },
+            credits:{
+                enabled:false
+            },
+            title: {
+                text: 'Fruit Consumption'
+            },
+            xAxis: {
+                categories: ['Apples', 'Bananas', 'Oranges']
+            },
+            yAxis: {
+                title: {
+                    text: 'Fruit eaten'
+                }
+            },
+            series: [{
+                name: 'Jane',
+                data: [5, 7, 3]
+            }, {
+                name: 'John',
+                data: [5, 7, 3]
+            }]
+        });
+    });
+    </script>
+
+
+  </body>
+</html>

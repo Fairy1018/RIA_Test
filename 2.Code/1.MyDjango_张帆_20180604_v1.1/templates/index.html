@@ -1,0 +1,53 @@
+<!--获取static路径-->
+{% load static %}
+<html>
+<head>
+    <link rel="stylesheet" type="text/css" href="{% static 'css/new_blah.css' %}">
+</head>
+<body>
+    <div class="header">
+        <img src="{% static 'images/blah.png' %}">
+        <ul class="nav">
+            <li><a href="#">Home</a></li>
+            <li><a href="#">Site</a></li>
+            <li><a href="#">Other</a></li>
+        </ul>
+    </div>
+    <div class="main-content">
+        <h2>招聘信息</h2>
+        <ul class="articles">
+            <!--模板语言，网页循环生成-->
+            {% for item in ArtiInfo %}
+                 <li>
+                <img src="{% static 'images/0001.jpg' %}" width="100" height="91">
+                <div class="article-info">
+                    <h3><a href="{{ item.link }}">{{ item.title }}</a></h3>
+                    <p class="meta-info">
+                        <!--招聘人数和工资-->
+                        <span class="meta-cate">{{ item.num }}</span>
+                        <span class="meta-cate">{{ item.salary }}</span>
+                    </p>
+                    <p class="description">{{ item.company}}</p>
+                </div>
+                <div class="rate">
+                    <span class="rate-score">{{ item.updatetime }}</span>
+                </div>
+            </li>
+            {% endfor %}
+        </ul>
+        {# 最下面的页码跳转标#}
+        <div >
+            {% if ArtiInfo.has_previous %}
+                <a href="?page={{ ArtiInfo.previous_page_number }}">< Pre</a>
+            {% endif %}
+                <span>{{ ArtiInfo.number }} of {{ ArtiInfo.paginator.num_pages }}</span>
+            {% if ArtiInfo.has_next %}
+                <a href="?page={{ ArtiInfo.next_page_number }}">Next></a>
+            {% endif %}
+        </div>`
+    </div>
+    <div class="footer">
+        <p>&copy; Mugglecoding</p>
+    </div>
+</body>
+</html>
